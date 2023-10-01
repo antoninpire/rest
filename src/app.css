@@ -2,8 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	:root {
+		--background: 0 0% 9%;
+		--foreground: 0 0% 98%;
+
+		--muted: 0 0% 14.9%;
+		--muted-foreground: 0 0% 63.9%;
+
+		--popover: 0 0% 3.9%;
+		--popover-foreground: 0 0% 98%;
+
+		--card: 0 0% 3.9%;
+		--card-foreground: 0 0% 98%;
+
+		--border: 0 0% 14.9%;
+		--input: 0 0% 14.9%;
+
+		--primary: 142.1 70.6% 45.3%;
+		--primary-foreground: 144.9 80.4% 10%;
+
+		--secondary: 0 0% 14.9%;
+		--secondary-foreground: 0 0% 98%;
+
+		--accent: 0 0% 14.9%;
+		--accent-foreground: 0 0% 98%;
+
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 0% 98%;
+
+		--ring: 0 0% 83.1%;
+
+		--radius: 0.5rem;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
 html,
 body {
-	background-color: black;
-	color: white;
+	@apply font-["Inter"];
 }
+
+.splitpanes .splitpanes__pane {
+	@apply !bg-background;
+}
+
+/* .splitpanes.default-theme .splitpanes__splitter:hover:before,
+.splitpanes.default-theme .splitpanes__splitter:hover:after {
+	@apply !bg-neutral-900;
+} */
+
+/* .splitpanes__splitter {
+	@apply hover:!bg-green-700 hover:!border-l-green-700 hover:!border-t-green-700 !bg-green-800;
+} */
+
+.default-theme.splitpanes--vertical > .splitpanes__splitter {
+	@apply !w-0.5 !border-l-neutral-800 !bg-neutral-800;
+}
+
+.default-theme.splitpanes--horizontal > .splitpanes__splitter {
+	@apply !h-0.5 !border-t-neutral-800 !bg-neutral-800;
+}
+
+/*
+.splitpanes.default-theme .splitpanes__splitter {
+	background-color: #ccc;
+	box-sizing: border-box;
+	position: relative;
+	flex-shrink: 0;
+}
+.splitpanes.default-theme .splitpanes__splitter:before,
+.splitpanes.default-theme .splitpanes__splitter:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: rgba(0, 0, 0, 0.15);
+	transition: background-color 0.3s;
+}
+.splitpanes.default-theme .splitpanes__splitter:hover:before,
+.splitpanes.default-theme .splitpanes__splitter:hover:after {
+	background-color: rgba(0, 0, 0, 0.25);
+}
+.splitpanes.default-theme .splitpanes__splitter:first-child {
+	cursor: auto;
+}
+
+.default-theme.splitpanes .splitpanes .splitpanes__splitter {
+	z-index: 1;
+}
+.default-theme.splitpanes--vertical > .splitpanes__splitter,
+.default-theme .splitpanes--vertical > .splitpanes__splitter {
+	width: 7px;
+	border-left: 1px solid #eee;
+	cursor: col-resize;
+}
+.default-theme.splitpanes--vertical > .splitpanes__splitter:before,
+.default-theme.splitpanes--vertical > .splitpanes__splitter:after,
+.default-theme .splitpanes--vertical > .splitpanes__splitter:before,
+.default-theme .splitpanes--vertical > .splitpanes__splitter:after {
+	transform: translateY(-50%);
+	width: 1px;
+	height: 30px;
+}
+.default-theme.splitpanes--vertical > .splitpanes__splitter:before,
+.default-theme .splitpanes--vertical > .splitpanes__splitter:before {
+	margin-left: -2px;
+}
+.default-theme.splitpanes--vertical > .splitpanes__splitter:after,
+.default-theme .splitpanes--vertical > .splitpanes__splitter:after {
+	margin-left: 1px;
+}
+.default-theme.splitpanes--horizontal > .splitpanes__splitter,
+.default-theme .splitpanes--horizontal > .splitpanes__splitter {
+	height: 7px;
+	border-top: 1px solid #eee;
+	cursor: row-resize;
+}
+.default-theme.splitpanes--horizontal > .splitpanes__splitter:before,
+.default-theme.splitpanes--horizontal > .splitpanes__splitter:after,
+.default-theme .splitpanes--horizontal > .splitpanes__splitter:before,
+.default-theme .splitpanes--horizontal > .splitpanes__splitter:after {
+	transform: translateX(-50%);
+	width: 30px;
+	height: 1px;
+}
+.default-theme.splitpanes--horizontal > .splitpanes__splitter:before,
+.default-theme .splitpanes--horizontal > .splitpanes__splitter:before {
+	margin-top: -2px;
+}
+.default-theme.splitpanes--horizontal > .splitpanes__splitter:after,
+.default-theme .splitpanes--horizontal > .splitpanes__splitter:after {
+	margin-top: 1px;
+}
+*/

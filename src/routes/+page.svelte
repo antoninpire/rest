@@ -1,37 +1,21 @@
 <script lang="ts">
-	let loading = false;
-	let url = '';
-	let response = '';
-	let method: 'GET' | 'POST' = 'GET';
-
-	async function handleClick() {
-		loading = true;
-		const res = await fetch(url, {
-			method: 'POST',
-			body: JSON.stringify({
-				email: 'tech@tcheker.fr',
-				password: 'demo'
-			}),
-			headers: {
-				'Content-type': 'application/json'
-			}
-		});
-		const json = await res.json();
-		response = JSON.stringify(json, null, 2);
-		loading = false;
-	}
+	import { Pane, Splitpanes } from 'svelte-splitpanes';
 </script>
 
-<input type="text" bind:value={url} class="bg-black border-white border min-w-[450px]" />
-<select bind:value={method} class="text-white bg-black">
-	<option value="GET">GET</option>
-	<option value="POST">POST</option>
-</select>
-<button disabled={loading} on:click={handleClick}>{!loading ? 'Send' : 'Sending...'}</button>
-<br />
-<pre>{response}</pre>
+<Splitpanes>
+	<Pane class="!bg-black" minSize={20} size={20}
+		>1<br /><em class="specs">I have a min width of 20%</em></Pane
+	>
+	<Pane class="!bg-black" minSize={60} size={80}>
+		<Splitpanes horizontal={true}>
+			<Pane class="!bg-black" minSize={30}
+				>2<br /><em class="specs">I have a min height of 15%</em></Pane
+			>
+			<Pane minSize={30}>3</Pane>
+		</Splitpanes>
+	</Pane>
+</Splitpanes>
 
-<!-- local to local WORKS -->
-<!-- cloud to local WORKS -->
-<!-- local to cloud WORKS -->
-<!-- cloud to cloud ??? -->
+<svelte:head>
+	<title>REST</title>
+</svelte:head>
