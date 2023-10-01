@@ -1,17 +1,11 @@
 <script lang="ts">
 	import { buttonVariants } from '$lib/components/ui/button';
 	import * as Tooltip from '$lib/components/ui/tooltip';
-	import { currentRequest, requests, type CRequest } from '$lib/stores';
-	import { createId } from '@paralleldrive/cuid2';
+	import { createDefaultRequest, currentRequest, requests } from '$lib/stores';
 	import RequestTab from './RequestTab.svelte';
 
 	function handleAddTab() {
-		const request: CRequest = {
-			method: 'GET',
-			url: '',
-			id: createId(),
-			parameters: [{ key: '', value: '' }]
-		};
+		const request = createDefaultRequest();
 		requests.update((requests) => [...requests, request]);
 		currentRequest.set(request);
 	}

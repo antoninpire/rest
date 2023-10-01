@@ -95,7 +95,7 @@
 {#if !$currentRequest || $currentRequest?.parameters.length === 0}
 	<div class="pt-8 flex justify-center items-center gap-4 flex-col text-muted-foreground">
 		<p class="text-xs">This request does not have any parameters</p>
-		<Button variant="ghost">
+		<Button variant="ghost" on:click={handleAddParameter}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="16"
