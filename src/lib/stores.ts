@@ -13,6 +13,8 @@ export type ContentType =
 	| 'text/html'
 	| 'text/plain';
 
+export type AuthorizationType = 'None' | 'Basic Auth' | 'Bearer Token';
+
 export type CResponse = {
 	status: number;
 	statusText: string;
@@ -34,6 +36,10 @@ export type CRequest = {
 	contentType: ContentType;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	response?: CResponse;
+	authorization?: {
+		type: AuthorizationType;
+		value: string;
+	};
 };
 
 export function createDefaultRequest(): CRequest {

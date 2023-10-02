@@ -16,8 +16,8 @@
 		{#each configTabs as tab}
 			<button
 				on:click={() => handleSwitchConfigTab(tab)}
-				class="pb-2 border-b {$currentConfigTab === tab
-					? 'border-b-primary'
+				class="pb-2 border-b hover:text-white {$currentConfigTab === tab
+					? 'border-b-primary text-white'
 					: 'border-b-transparent'}"
 			>
 				{tab}

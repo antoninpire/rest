@@ -26,6 +26,13 @@ export function buildRequest(request: CRequest): AxiosRequestConfig {
 		request.body = encodedParams;
 	}
 
+	if (request.authorization && request.authorization.type !== 'None') {
+		headers['Authorization'] =
+			request.authorization.type === 'Bearer Token'
+				? `Bearer ${request.authorization.value}`
+				: `Basic ${request.authorization.value}`;
+	}
+
 	return {
 		headers,
 		url: url.toString(),
