@@ -65,3 +65,5 @@ export const currentConfigTab = writable<ConfigTab>('Parameters');
 export const leftPaneSize = writable(20);
 export const requestPaneSize = writable(50);
 export const resultPaneSize = writable(50);
+
+export const collectionDialogOpen = writable(false);

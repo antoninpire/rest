@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import Button from '$lib/components/ui/button/button.svelte';
 	import {
+		collectionDialogOpen,
 		currentRequest,
 		leftPaneSize,
 		requestPaneSize,
@@ -11,6 +13,10 @@
 	import { Pane, Splitpanes } from 'svelte-splitpanes';
 	import RequestPane from './RequestPane.svelte';
 	import ResponsePane from './ResponsePane.svelte';
+
+	function openDialog() {
+		collectionDialogOpen.set(true);
+	}
 
 	onMount(() => {
 		// TODO: improve
@@ -53,9 +59,38 @@
 </script>
 
 <Splitpanes>
-	<Pane minSize={20} bind:size={$leftPaneSize}
-		>1<br /><em class="specs">I have a min width of 20%</em></Pane
-	>
+	<Pane minSize={20} bind:size={$leftPaneSize}>
+		<div
+			class="flex items-center px-4 text-muted-foreground text-xs py-2 justify-between font-medium border-b border-b-neutral-800"
+		>
+			<p>Collections</p>
+			<button on:click={openDialog} class="text-xs inline-flex items-center gap-1 hover:text-white">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					class="lucide lucide-plus"><path d="M5 12h14" /><path d="M12 5v14" /></svg
+				>
+				Add new
+			</button>
+		</div>
+		<input
+			class="py-2 px-4 text-xs border-b border-b-neutral-800 w-full bg-transparent outline-none"
+			placeholder="Search..."
+		/>
+		{#if true}
+			<div class="py-5 flex justify-center items-center flex-col gap-3">
+				<p class="text-sm">No collections yet.</p>
+				<Button size="sm" variant="secondary" on:click={openDialog}>Add new</Button>
+			</div>
+		{/if}
+	</Pane>
 	<Pane minSize={60} size={80}>
 		<Splitpanes horizontal={true}>
 			<RequestPane bind:size={$requestPaneSize} />

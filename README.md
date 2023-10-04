@@ -1,38 +1,19 @@
-# create-svelte
+# WIP - A simple api platform (alternative to Postman, Hoppscotch and the likes) with just the right amount of features, and made for my personal use
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+TODOs:
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- [ ] DB schemas for collections, history, user current requests
+- [ ] Add a collection
+- [ ] View collections in a recursive tree view
+- [ ] Save requests to a collection
+- [ ] DB schema for environments
+- [ ] Create environments
+- [ ] Proper profile popover
+- [ ] Copy response to clipboard
+- [ ] Download response
+- [ ] Add workspaces & collaborators?
+- [ ] UI
+  - [ ] Remove focus outlines on the request url input, and the request method selector
+  - [ ] Add colors to the method type
+  - [ ] Replace the primary color for the app
+  - [ ] Change the Sending... to a loader + Send
