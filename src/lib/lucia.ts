@@ -1,14 +1,14 @@
 import { dev } from '$app/environment';
-import { connection } from '$lib/db';
-import { planetscale } from '@lucia-auth/adapter-mysql';
+import { tursoClient } from '$lib/db';
+import { libsql } from '@lucia-auth/adapter-sqlite';
 import { lucia } from 'lucia';
 import { sveltekit } from 'lucia/middleware';
 
 export const auth = lucia({
-	adapter: planetscale(connection, {
-		key: 'rest_auth_keys',
-		session: 'rest_auth_sessions',
-		user: 'rest_users'
+	adapter: libsql(tursoClient, {
+		key: 'auth_keys',
+		session: 'auth_sessions',
+		user: 'users'
 	}),
 	env: dev ? 'DEV' : 'PROD',
 	middleware: sveltekit(),

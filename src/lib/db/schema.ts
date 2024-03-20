@@ -1,38 +1,36 @@
-import { bigint, mysqlTableCreator, varchar } from 'drizzle-orm/mysql-core';
+import { blob, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
-export const mysqlTable = mysqlTableCreator((name) => `rest_${name}`);
-
-export const user = mysqlTable('users', {
-	id: varchar('id', {
+export const user = sqliteTable('users', {
+	id: text('id', {
 		length: 15
 	}).primaryKey(),
-	email: varchar('email', { length: 128 }).unique()
+	email: text('email', { length: 128 }).unique()
 });
 
-export const key = mysqlTable('auth_keys', {
-	id: varchar('id', {
+export const key = sqliteTable('auth_keys', {
+	id: text('id', {
 		length: 255
 	}).primaryKey(),
-	userId: varchar('user_id', {
+	userId: text('user_id', {
 		length: 15
 	}).notNull(),
-	hashedPassword: varchar('hashed_password', {
+	hashedPassword: text('hashed_password', {
 		length: 255
 	})
 });
 
-export const session = mysqlTable('auth_sessions', {
-	id: varchar('id', {
+export const session = sqliteTable('auth_sessions', {
+	id: text('id', {
 		length: 128
 	}).primaryKey(),
-	userId: varchar('user_id', {
+	userId: text('user_id', {
 		length: 15
 	}).notNull(),
-	activeExpires: bigint('active_expires', {
-		mode: 'number'
+	activeExpires: blob('active_expires', {
+		mode: 'bigint'
 	}).notNull(),
-	idleExpires: bigint('idle_expires', {
-		mode: 'number'
+	idleExpires: blob('idle_expires', {
+		mode: 'bigint'
 	}).notNull(),
-	email: varchar('email', { length: 128 })
+	email: text('email', { length: 128 })
 });

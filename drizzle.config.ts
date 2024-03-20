@@ -2,9 +2,9 @@ import { type Config } from 'drizzle-kit';
 
 export default {
 	schema: './src/lib/db/schema.ts',
-	driver: 'mysql2',
+	driver: 'turso',
 	dbCredentials: {
-		connectionString: process.env.DATABASE_URL!
-	},
-	tablesFilter: ['rest_*']
+		url: process.env.TURSO_URL!,
+		authToken: process.env.TURSO_AUTH_TOKEN!
+	}
 } satisfies Config;
